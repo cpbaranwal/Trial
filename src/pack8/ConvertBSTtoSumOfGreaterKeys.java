@@ -3,7 +3,7 @@ import pack6.TreeUtil;
 import pack6.TreeUtil.Tnode;
 
 /**
- 
+date: 14 june 2015
 Convert a BST to a Binary Tree such that sum of all greater keys is added to every key
 
 Given a Binary Search Tree (BST), convert it to a Binary Tree such that every key of the original BST is changed to key plus sum of all greater keys in BST.
