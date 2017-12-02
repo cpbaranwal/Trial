@@ -1,6 +1,4 @@
-package leetcode.easy;
-
-import leetcode.medium.ReverseLinkedList2.ListNode;
+package leetcode.goodOnes;
 
 public class PalindromeLinkedList {
 
@@ -18,7 +16,36 @@ public class PalindromeLinkedList {
 
   }
   
-  public boolean isPalindrome(ListNode head) {
+  //using recursion
+  ListNode left;
+  public boolean isPalindrome(ListNode head) 
+  {
+    if(head==null || head.next==null)
+      return true;
+    left=head;
+    //right=head;
+    return isPalindromeHelper(head);
+    
+  }
+  private boolean isPalindromeHelper(ListNode right) 
+  {
+    if(right==null)
+      return true;
+    boolean bool= isPalindromeHelper(right.next);
+    if(!bool)
+      return false;
+    if(left.val==right.val)
+    {
+      left=left.next;
+      return true;
+    }
+    else
+      return false;
+  }
+
+
+  //using iteration
+  public boolean isPalindrome2(ListNode head) {
     if(head==null || head.next==null)
       return true;
     ListNode t1=head;ListNode slow=head;ListNode fast=head;
