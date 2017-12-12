@@ -145,6 +145,7 @@ public class LRU_CacheImplementation {
 				lNode.prev=null;
 				map.remove(lNode);//remove from Map also
 				System.out.println("Cache size exceeded limit, so removing from cache: "+lNode.data);
+				count--;
 			}
 		}
 

@@ -6,6 +6,11 @@ public class HeapSort {
 	     program for sorting a given array using heapSort
 	 */
 	
+  
+  //TODO rewrite on basis of : http://www.geeksforgeeks.org/heap-sort/
+  //heapify: O(LogN)   
+  //Building heap and traversing each element from last index:  O(N)
+  //Total:  O(N*LogN)
 	public static void main(String[] args)
 	{
 		int[] arr = {1,3,7,2,6,8,5,4};

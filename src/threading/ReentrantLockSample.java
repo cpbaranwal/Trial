@@ -1,5 +1,6 @@
 package threading;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -16,6 +17,7 @@ public class ReentrantLockSample {
 	//Object lock = new Object();
 	static Lock lock = new ReentrantLock();
 	static Condition conditionObj = lock.newCondition();
+	AtomicInteger ai;
 	
 	
 	

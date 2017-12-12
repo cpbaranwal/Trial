@@ -106,8 +106,8 @@ public class Traverse2BinaryTreesInorder {
 			public void run()
 			{
 				try {
-					//inorderTraversal(root1,lock1,lock2);   //approach1 using synchronization
-					inorderTraversal(root1,0,1);     //approach2 using volatile...no synchronization
+					inorderTraversal(root1,lock1,lock2);   //approach1 using synchronization
+					//inorderTraversal(root1,0,1);     //approach2 using volatile...no synchronization
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -120,8 +120,8 @@ public class Traverse2BinaryTreesInorder {
 			public void run()
 			{
 				try {
-					//inorderTraversal(root2,lock2,lock1);   //approach1
-					inorderTraversal(root2,1,0);
+					inorderTraversal(root2,lock2,lock1);   //approach1
+					//inorderTraversal(root2,1,0);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

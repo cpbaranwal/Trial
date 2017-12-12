@@ -31,7 +31,7 @@ public static void main(String[] args) {
 }
 
 static int num1=10;
-static int num2=5;
+static int num2=7;
 public static int getLCA(Tnode root)
 {
 	if(root==null || (root.l==null && root.r==null))

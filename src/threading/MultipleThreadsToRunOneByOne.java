@@ -46,7 +46,7 @@ public class MultipleThreadsToRunOneByOne {
 		t2.start();
 		t3.start();
 		
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		System.exit(0);
 		
 	}

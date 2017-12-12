@@ -30,7 +30,7 @@ public class LowestCommonAncestorInBST {
 	}
 	
 	static int num1 = 5;
-	static int num2 = 1;
+	static int num2 = 4;
 	public static int getLCA(Tnode root)
 	{
 		if(num1>num2)  //preserving order num1<num2
@@ -50,7 +50,7 @@ public class LowestCommonAncestorInBST {
 			return null;
 		
 		System.out.print("  "+head.data);
-		if(head.data>num1 && head.data<num2)
+		if(head.data>=num1 && head.data<=num2)
 			return head;
 		
 		if(head.data<num1)

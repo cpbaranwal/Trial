@@ -1,10 +1,15 @@
 package temp;
 
 import java.util.HashMap;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 public class Test {
 
@@ -15,6 +20,11 @@ public class Test {
 		map.entrySet();
 		ThreadLocal tl;
 		ArrayBlockingQueue abq;
+		PriorityBlockingQueue pbq;
+		LinkedBlockingQueue lbq;
+		AbstractQueuedSynchronizer aqs;
+		ConcurrentSkipListMap cslm;
+		
 		
 		String s="c";
 		System.out.println("==="+s.substring(2));
