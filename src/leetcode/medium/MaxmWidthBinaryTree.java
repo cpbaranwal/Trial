@@ -49,64 +49,111 @@ Input:
 Output: 8
 Explanation:The maximum width existing in the fourth level with the length 8 (6,null,null,null,null,null
  */
+
 public class MaxmWidthBinaryTree {
 
-  public static void main(String[] args) {
-      TreeNode t= new TreeNode(1);
-      t.left= new TreeNode(3);
-      t.left.left= new TreeNode(5);
-      t.left.right= new TreeNode(3);
-      t.right= new TreeNode(2);
-      //t.right.left= new TreeNode(2);
-      t.right.right= new TreeNode(9);
-      MaxmWidthBinaryTree obj = new MaxmWidthBinaryTree();
-      int res= obj.widthOfBinaryTree(t);
-      System.out.println("res= "+res);
+    public static void main(String[] args) {
+        TreeNode t= new TreeNode(1);
+        t.left= new TreeNode(3);
+        t.left.left= new TreeNode(5);
+        //t.left.left.left= new TreeNode(6);
+        t.left.right= new TreeNode(3);
+        //t.right= new TreeNode(2);
+        //t.right.left= new TreeNode(2);
+        //t.right.right= new TreeNode(9);
+        //t.right.right.right= new TreeNode(7);
+        MaxmWidthBinaryTree obj = new MaxmWidthBinaryTree();
+        int res= obj.widthOfBinaryTree(t);
+        System.out.println("res= "+res);
 
-  }
-  
-  int maxlevel=0;
-  public int widthOfBinaryTree(TreeNode root) {
-    if(root==null)
-      return 0;
-    widthOfBinaryTreeHelper(root);
-    return (int)Math.pow(2, maxlevel);
-    
-  }
-  public void widthOfBinaryTreeHelper(TreeNode node ) {
-    if(node==null)
-      return;
-    widthOfBinaryTreeHelper(node.left);
-    widthOfBinaryTreeHelper(node.right);
-    int numLeft=0;int numRight=0;
-    TreeNode t1=node;
-    TreeNode t2=node;
-    while(t1.left!=null)
-    {
-      t1=t1.left;
-      numLeft++;
     }
-    while(t2.right!=null)
+
+    static List<TreeNode> list1 = new ArrayList<TreeNode>();
+    static List<TreeNode> list2 = new ArrayList<TreeNode>();
+    static int max=0;
+    public int widthOfBinaryTree(TreeNode root)
     {
-      t2=t2.right;
-      numRight++;
+        if(root==null)
+            return 0;
+        list1.add(root.left);
+        list1.add(root.right);
+        findMaxWidthHelper();
+        return max;
     }
-    int num= numLeft<numRight ? numLeft:numRight;
-    maxlevel = num>maxlevel ? num:maxlevel;
-    
-  }
-  
-  
-  
-  
-    
-    
-  static public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) { val = x; }
-}
+
+    private void findMaxWidthHelper()
+    {
+        boolean flagContinue=true;
+        while(flagContinue)
+        {
+            flagContinue = false;
+
+            if(!list1.isEmpty())
+            {
+
+                int indx1=-1; int indx2=-1;
+                for(int i =0; i< list1.size(); i++)
+                {
+                    TreeNode node = list1.get(i);
+                    if(node!=null)
+                    {
+                        flagContinue = true;//needed to check if any valid number
+                        list2.add(node.left);
+                        list2.add(node.right);
+                        if(indx1 == -1)
+                            indx1=i;
+                        else
+                            indx2=i;
+                    }
+                    else
+                    {
+                        list2.add(null);
+                        list2.add(null);
+                    }
+                }
+                if(max < (indx2-indx1+1))
+                    max=(indx2-indx1+1);
+                System.out.println("list1 ="+list1);
+                System.out.println("list1  indx1="+indx1+"   indx2="+indx2+"  max="+max+"  ");
+                list1 = new ArrayList<TreeNode>();
+            }
+            else //!list2.isEmpty()
+            {
+                int indx1=-1; int indx2=-1;
+                for(int i =0; i< list2.size(); i++)
+                {
+                    TreeNode node = list2.get(i);
+                    if(node!=null)
+                    {
+                        flagContinue = true;//needed to check if any valid number
+                        list1.add(node.left);
+                        list1.add(node.right);
+                        if(indx1 == -1)
+                            indx1=i;
+                        else
+                            indx2=i;
+                    }
+                    else
+                    {
+                        list1.add(null);
+                        list1.add(null);
+                    }
+                }
+                if(max < (indx2-indx1+1))
+                    max=(indx2-indx1+1);
+                System.out.println("list2 ="+list2);
+                System.out.println("list2  indx1="+indx1+"   indx2="+indx2+"  max="+max+"  ");
+                list2 = new ArrayList<TreeNode>();
+            }
+        }
+    }
+
+    static public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
 
 
 }
