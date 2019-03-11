@@ -21,7 +21,7 @@ public class SimplifyUnixPath {
 
   public static void main(String[] args) {
     SimplifyUnixPath obj= new SimplifyUnixPath();
-    String str= "";
+    String str= "/a/./b/../../c/";
     System.out.println("result= "+obj.simplifyPath(str));
 
   }

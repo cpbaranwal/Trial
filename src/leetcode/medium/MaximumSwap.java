@@ -3,7 +3,8 @@ package leetcode.medium;
 /**
  * https://leetcode.com/problems/maximum-swap/description/
  * @author chandan
- *Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.
+ *Given a non-negative integer, you could swap two digits at most once to get the maximum valued number.
+ *Return the maximum valued number you could get.
 
 Example 1:
 Input: 2736
@@ -39,8 +40,9 @@ public class MaximumSwap {
       arr[i]= Integer.parseInt(""+str.charAt(i));
     
     int len=str.length();
-    for(int i=0; i<len-1; i++)
-    {
+    int i =0;
+    //for(int i=0; i<len-1; i++)
+    //{
       int maxIndx=i+1;
       for(int j=i+1; j<len; j++)
       {
@@ -59,7 +61,7 @@ public class MaximumSwap {
        // System.out.println("final res="+res);
         return res;
       }
-    }
+   // }
     return num;
   }  
   

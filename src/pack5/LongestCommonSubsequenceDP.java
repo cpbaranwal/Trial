@@ -9,17 +9,56 @@ public class LongestCommonSubsequenceDP {
 	public static void main(String[] args) {
 		
 
-		int length = getLongestSubSequenceLengthUsingDP();
-		System.out.println("length=="+length);
+		int length = getLongestSubSequenceLengthUsingDP2();
+		System.out.println("length = "+length);
+		length = getLongestSubSequenceLengthUsingDP();
+		System.out.println("length = "+length);
 		String subSeq= getSubSequenceStringHelper();
 		System.out.println("subSeq= "+subSeq);
-		int length2 = getLCSUsingRecursion(str1,str2);
-		System.out.println("length2=="+length2);
+		//int length2 = getLCSUsingRecursion2(str1,str2);
+		//System.out.println("length2=="+length2);
 		
 	}
-	
 	private static  String str1 = "abcdefghii";
 	private static  String str2 = "aaddbbffccddmmii";
+
+	private static int getLongestSubSequenceLengthUsingDP2()  //time-O(m*n)  space-(m*n)
+	{
+		int m = str1.length();
+		int n = str2.length();
+		storage = new int[m][n];
+
+		// normal cases
+		for(int i = 0 ; i < m ; i++)
+		{
+			for(int j = 0; j < n; j++ ){
+				if(i>0 && j>0)
+					storage[i][j] = storage[i-1][j-1];
+				if(str1.charAt(i) == str2.charAt(j))
+					storage[i][j] += 1;
+				if(i>0 && storage[i][j] < storage[i-1][j])
+					storage[i][j] = storage[i-1][j];
+				if(j>0 && storage[i][j] < storage[i][j-1])
+					storage[i][j] = storage[i][j-1];
+			}
+		}
+		return storage[m-1][n-1];
+	}
+
+	public static int getLCSUsingRecursion2(String str1, String str2){
+		if(str1 == null || str2 == null || str1.isEmpty() || str2.isEmpty())
+			return 0;
+		int len1 = 0;
+		if(str1.charAt(0) == str2.charAt(0))
+			len1 = 1;
+		len1 += getLCSUsingRecursion2(str1.substring(1), str2.substring(1));
+		int len2 = getLCSUsingRecursion2(str1, str2.substring(1));
+		int len3 = getLCSUsingRecursion2(str1.substring(1), str2);
+		int max = len1 > len2 ? len1 : len2;
+		return (max > len3 ? max :  len3);
+	}
+	
+
 	static int[][] storage;  static int m,n;
 	private static int getLongestSubSequenceLengthUsingDP()  //time-O(m*n)  space-(m*n)
 	{

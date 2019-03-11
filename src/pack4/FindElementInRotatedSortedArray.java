@@ -10,13 +10,38 @@ public class FindElementInRotatedSortedArray {
 	public static void main(String[] args) {
 		int[] arr={15,21,24,35,3,8,10,13};
 		
-		int num=10;
-		System.out.println("Index found:"+findNumberIndx( arr,num));
+		int num=15;
+		System.out.println("Index found:"+findNumberIndx2( arr,num));
 		
 
 	}
-	
-	
+
+	// smarter and shorter
+	public static int findNumberIndx2(int[] arr,int num){
+		if(arr==null || arr.length ==0)
+			return -1;  //throw exception
+
+		return findNumberIndx2(arr, num, 0 , arr.length-1);
+	}
+	private static int findNumberIndx2(int[] arr, int num, int left, int right) {
+		//terminating conditions
+		if(left>right)
+			return -1;
+		if(arr[left]==num)
+			return left;
+		if(arr[right]==num)
+			return right;
+
+		int mid = (left+right)/2;
+		if(num>=arr[left] && num<=arr[mid])
+			return findNumberIndx2(arr, num, left, mid);
+		else
+			return findNumberIndx2(arr, num, mid+1, right);
+
+
+	}
+
+
 	public static int findNumberIndx(int[] arr,int num)
 	{
 		if(arr==null || arr.length ==0)

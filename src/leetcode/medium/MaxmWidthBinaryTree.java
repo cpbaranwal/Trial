@@ -1,4 +1,5 @@
 package leetcode.medium;
+import java.util.*;
 
 
 /**
@@ -68,6 +69,7 @@ public class MaxmWidthBinaryTree {
 
     }
 
+    
     static List<TreeNode> list1 = new ArrayList<TreeNode>();
     static List<TreeNode> list2 = new ArrayList<TreeNode>();
     static int max=0;

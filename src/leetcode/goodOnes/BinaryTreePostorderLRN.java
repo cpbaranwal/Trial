@@ -38,7 +38,7 @@ public class BinaryTreePostorderLRN {
     List<Integer> list = new ArrayList<Integer>();
     //postorderTraversalRecursion(root,list);
     postorderTraversalIteration(root,list);
-     Collections.reverse(list);
+     Collections.reverse(list); // tricky part
      return list;
   }
   

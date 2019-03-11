@@ -37,7 +37,7 @@ public class MarkAncestorsInBinaryTree {
 		  rt.r.l=new Node(6);
 		  rt.r.r=new Node(7);
 		  
-		  findAncestors(rt, arr);
+		  findAncestors2(rt, arr);
 		  
 		  System.out.println("OUTPUT:");
 		  for(int i=0;i<NUM;i++)
@@ -50,7 +50,27 @@ public class MarkAncestorsInBinaryTree {
 		  
 		
 	}
-	
+
+	// smarter and shorter
+	public static void findAncestors2(Node root, int[][] arr){
+		if(root==null )
+			return;
+		findAncestors2Helper(root,arr);
+	}
+	private static List<Integer> findAncestors2Helper(Node node, int[][] arr) {
+		if(node == null)
+			return new ArrayList<Integer>();
+
+		List<Integer> list1 = findAncestors2Helper(node.l, arr);
+		List<Integer> list2 = findAncestors2Helper(node.r, arr);
+		list1.addAll(list2);
+		for(Integer num: list1)
+			arr[node.data][num]=1;
+		list1.add(node.data);
+		return list1;
+	}
+
+
 	public static void findAncestors(Node rt,int[][] arr)
 	{
 		if(rt==null )

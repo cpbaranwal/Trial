@@ -12,7 +12,7 @@ public class ReverseWordsInGivenString {
 
 		String input = "  Hi my name is chandan  ";
 		System.out.println("input.length()=="+input.length());
-		System.out.println("result1="+getReversedString(input));
+		//System.out.println("result1="+getReversedString(input));
 		System.out.println("result2="+getReversedWordsString(input));  //better one ,simple and elegant
 
 	}

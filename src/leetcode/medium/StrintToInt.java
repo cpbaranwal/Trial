@@ -4,7 +4,7 @@ public class StrintToInt {
 
   public static void main(String[] args) {
     StrintToInt obj = new StrintToInt();
-    String str = "1";
+    String str = "1462";
     int num = obj.myAtoi(str);
     System.out.println("result= " + num);
   }
@@ -31,7 +31,7 @@ public class StrintToInt {
       if (digit > 9 || digit < 0)
         break;
       int prev = num;
-      num = num * 10 - digit;
+      num = num * 10 + digit;
       if (prev < num || num > -Integer.MAX_VALUE) {
         num = Integer.MIN_VALUE; // value has overflown
         break;

@@ -12,9 +12,28 @@ public class LongestIncreasingSubsequence {
     public static void main(String[] args)
     {
         int arr[] = {3,2,4,1,6,7,8,5,10,11};
-        int length = getLengthLIS(arr);
+        int length = getLengthLIS2(arr);
         System.out.println("length== "+length);
 
+    }
+
+
+    private static int  getLengthLIS2(int[] arr)
+    {
+        int max[] = new int[arr.length];
+        max[0] = 1;
+        for(int i = 1; i < arr.length; i++)
+        {
+            for(int j = 0; j<i; j++)
+            {
+                int tmp = max[j];
+                if(arr[j]<arr[i])
+                    tmp++;
+                if(tmp>max[i])
+                    max[i]=tmp;
+            }
+        }
+        return max[arr.length-1];
     }
    
    

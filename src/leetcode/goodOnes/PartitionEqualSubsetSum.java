@@ -1,9 +1,12 @@
 package leetcode.goodOnes;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/partition-equal-subset-sum/description/
  * @author chandan
- *Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+ *Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets 
+ *such that the sum of elements in both subsets is equal.
 
 Note:
 Each of the array element will not exceed 100.
@@ -27,10 +30,11 @@ public class PartitionEqualSubsetSum {
 
   public static void main(String[] args) 
   {
-   int[] nums={1,2,5};
+   int[] nums={2,1,2,2};
    System.out.println("result= "+canPartition(nums));
 
   }
+  
   
   
   //DP Solution   TODO debug, one small bug remaining
@@ -59,6 +63,8 @@ public class PartitionEqualSubsetSum {
       if(elem<=sum)
         sumElementArr[elem][1]=true;
       //System.out.println("sumElementArr["+elem+"][1]="+sumElementArr[elem][1]);
+      else // can not expect element greter than totalSum/2
+    	  return false;  
     }
     
     for (int i = 0; i <= sum; i++)

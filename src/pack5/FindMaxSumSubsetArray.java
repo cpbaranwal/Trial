@@ -21,13 +21,13 @@ public class FindMaxSumSubsetArray {
 		int[] arr={-2,-3,-5,40,-10,-10,100,1};
 		
 		
-		findMaxSubSeqInSingleTraversal(arr);//approach1
-		System.out.println("maxSum=="+maxSum);
-		System.out.println("start=="+start);
-		System.out.println("last=="+last);
+		//findMaxSubSeqInSingleTraversal(arr);//approach1
+		//System.out.println("maxSum=="+maxSum);
+		//System.out.println("start=="+start);
+		//System.out.println("last=="+last);
 		
-		findMaxSubSeqUsingDP(arr);//approach2
-	    System.out.println("maxSum=="+maxSum);
+		//findMaxSubSeqUsingDP(arr);//approach2
+	    //System.out.println("maxSum=="+maxSum);
 		
 		
 		maxSum = findMaxSubSeqUsingDC(arr,0,arr.length-1);//approach3
@@ -35,6 +35,7 @@ public class FindMaxSumSubsetArray {
 		
 
 	}
+
 	
 	private static void findMaxSubSeqUsingDP(int[] arr)  //time- O(N)   space-O(N)
 	{

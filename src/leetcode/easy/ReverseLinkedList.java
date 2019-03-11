@@ -16,18 +16,56 @@ public class ReverseLinkedList {
     System.out.println("before: \n ");
     printListNodes(t);
     ReverseLinkedList obj = new ReverseLinkedList();
-    ListNode t2= obj.reverseList(t);
+    //ListNode t2= obj.reverseList(t);
+    ListNode t2= obj.reverseListRecursion(t);
     System.out.println("\n after: \n ");
     printListNodes(t2);
 
   }
   
+  
+//using iteration
+  public ListNode reverseList(ListNode head) {
+	  if(head==null || head.next==null)
+		  return head;
+	  ListNode tmp = head;
+	  
+	  ListNode prev=null;
+	  while(tmp!=null)
+	  {
+		  ListNode tmpNext=tmp.next;
+		  tmp.next=prev;
+		  prev=tmp;
+		  tmp=tmpNext;
+	  }
+	  return prev;
+	  
+  }
+  
+  //using recursion
+  public ListNode reverseListRecursion(ListNode head) {
+	  
+	  return reverseListRecursionHelper(head,null);
+	  
+  }
+  private ListNode reverseListRecursionHelper(ListNode node, ListNode prev) {
+	  ListNode tmp = node.next;
+	  node.next = prev;
+	  if(tmp==null)
+		  return node;
+	  return reverseListRecursionHelper(tmp,node);
+  }
+  
+  
+  
+  
+  /*
   //using recursion
   public ListNode reverseList(ListNode head) {
     if(head==null || head.next==null)
       return head;
     ListNode curr=head;
-    ListNode st= reverseList2(head.next);
+    ListNode st= reverseList(head.next);
     ListNode tmp=st;
     while(tmp.next!=null)
       tmp=tmp.next;
@@ -37,7 +75,8 @@ public class ReverseLinkedList {
 
   }
   
-//using iteration
+
+  //using iteration
   public ListNode reverseList2(ListNode head) {
     if(head==null || head.next==null)
       return head;
@@ -56,6 +95,7 @@ public class ReverseLinkedList {
     return t;
 
   }
+  */
   
   public static void printListNodes(ListNode t)
   {

@@ -24,6 +24,7 @@ public class LongestSubstringWithoutRepeatingChars {
 
   }
 
+
   //approach- using a queue and a hashset
   public int lengthOfLongestSubstring(String s) {
     if(s==null)

@@ -3,7 +3,9 @@ package leetcode.goodOnes;
 /**
  * https://leetcode.com/problems/beautiful-arrangement/description/
  * @author chandan
- *Suppose you have N integers from 1 to N. We define a beautiful arrangement as an array that is constructed by these N numbers successfully if one of the following is true for the ith position (1 <= i <= N) in this array:
+ *Suppose you have N integers from 1 to N.
+ * We define a beautiful arrangement as an array that is constructed by these N numbers successfully
+ *  if one of the following is true for the ith position (1 <= i <= N) in this array:
 
 The number at the ith position is divisible by i.
 i is divisible by the number at the ith position.
@@ -61,7 +63,7 @@ public class BeautifulArrangement {
     }
     for(int i=1;i<=N;i++)
     {
-      if(visited[i]==0 & (pos%i==0 || i%pos==0) )
+      if(visited[i]==0 && (pos%i==0 || i%pos==0) )
       {
         visited[i]=1;
         countArrangementHelper(visited,pos+1,N);

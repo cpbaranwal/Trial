@@ -17,12 +17,13 @@ iterate n-1 steps.
 	public static void main(String[] args) {
 		
 		int a[]={1,3,5,7,11,33,55,77};
-		//swapElementsBruteForce(a,0,a.length-1);
+		swapElementsBruteForce(a,0,a.length-1);
 		swapElementsDC(a,0,a.length-1);
 		for(int i=0;i<a.length;i++)
 			System.out.print("  "+a[i]);
 
 	}
+
 	
 	
 	private static void swapElementsDC(int[] arr, int left, int right)   //Divide and Conquer - O(n*log(n))
@@ -86,6 +87,7 @@ iterate n-1 steps.
 	
 	public static void swap(int[]arr,int i, int j)
 	{
+		System.out.println("swapping at "+i+ "position with value " + arr[i]+" with "+j+" position with value "+arr[j]);
 		int tmp=arr[i];
 		arr[i]=arr[j];
 		arr[j]=tmp;
