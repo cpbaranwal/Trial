@@ -27,8 +27,12 @@ public class Topic {
         backupFilePath = Constants.DEFAULT_BACKUP_DIR + name;
     }
 
-    public ConcurrentLinkedQueue<String> getQueue() {
+    private ConcurrentLinkedQueue<String> getQueue() {
         return queue;
+    }
+
+    public String getNextElement(){
+        return queue.poll();
     }
 
     public Set<AbstractConsumer> getConsumers() {

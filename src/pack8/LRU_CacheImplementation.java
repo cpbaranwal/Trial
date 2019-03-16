@@ -12,7 +12,9 @@ date: 14 june 2015
  1. LRU cache internally will maintain a doubly linked list and a Hashmap of a maxm size deicded by user input.
  2. If request is for a new data, it will be read from disk file and load into cache. Will discard the oldest used element from hashamap and linkedlist if size is exceeded.
  3. if request is for a data already in cache,it will return for hashMap and at the same time,will move the element in doubly linked list to the front as it is now most recently used element.
- 
+
+ update 15mar19: For Thread Safe Implementation, refer this: https://www.ebayinc.com/stories/blogs/tech/high-throughput-thread-safe-lru-caching/
+
  */
 
 public class LRU_CacheImplementation {

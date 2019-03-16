@@ -26,9 +26,9 @@ public class MessageBrokerMain {
 
         System.out.println("22222 broker = "+ broker);
 
-        for(int i=0; i<5; i++){
+        for(int i=0; i<3; i++){
             p2.sendRecord("msg"+i,tp1);
-            //Thread.sleep(1*1000);
+            Thread.sleep(1*1000);
         }
 
         System.out.println("333333 broker = "+ broker);

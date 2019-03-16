@@ -10,7 +10,7 @@ public class ThreadInterruptionSample {
 	{
 		Thread t1 = new Thread(new MyRunnable());
 		t1.start();
-		Thread.sleep(100);
+		//Thread.sleep(1000);
 		t1.interrupt();
 		Thread.sleep(100);
 		flag=false;
@@ -29,6 +29,11 @@ public class ThreadInterruptionSample {
 			while(flag)
 			{
 				System.out.println(Thread.currentThread().getName()+"   running.....");
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				//if(Thread.currentThread().isInterrupted())
 					//throw new RuntimeException("Thread is interrupted");
 			}

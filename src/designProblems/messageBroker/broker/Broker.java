@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author chandan on 11/03/19
@@ -18,17 +19,17 @@ public class Broker extends AbstractBroker {
     Map<String, Topic> topics ;
     ExecutorService exec ;
     private volatile boolean running ;
-    int numThreads = 1;
+    int numThreads = 3;
 
     public Broker(){
         running = true;
         topics = new ConcurrentHashMap<String, Topic>();
-        //exec = Executors.newCachedThreadPool();
-        //for(int i =1; i<= numThreads; i++)
-         //   exec.submit(new Worker(i));
-        new Thread(new Worker(1)).start();
-        new Thread(new Worker(2)).start();
-        new Thread(new Worker(3)).start();
+        exec = Executors.newCachedThreadPool();
+        for(int i =1; i<= numThreads; i++)
+            exec.submit(new Worker(i));
+        //new Thread(new Worker(1)).start();
+        //new Thread(new Worker(2)).start();
+        //new Thread(new Worker(3)).start();
     }
 
 
@@ -41,7 +42,7 @@ public class Broker extends AbstractBroker {
         public void run() {
             while(running){
                 for(Topic tp: topics.values()){
-                    String msg = tp.getQueue().poll();
+                    String msg = tp.getNextElement();
                     if(msg != null){
                         System.out.println("Worker "+id+" processing msg: "+msg);
                         Set<AbstractConsumer> consumers = tp.getConsumers();
