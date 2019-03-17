@@ -68,7 +68,7 @@ public class Broker extends AbstractBroker {
     public boolean pushMessage(String msg, String topic, AbstractProducer producer) {
         topic = getNormalizedString(topic);
         if(eligibleProducer(topic, producer)){
-            topics.get(topic).getQueue().add(msg);
+            topics.get(topic).getNextElement();
             System.out.println("producer :"+producer.getName()+"  published  to topic : "+ topic+" msg = "+msg);
             return true;
         }
